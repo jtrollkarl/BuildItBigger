@@ -46,9 +46,12 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
-    compileFree ''
+    freeCompile 'com.google.firebase:firebase-core:10.0.0'
+    freeCompile 'com.google.firebase:firebase-ads:10.0.0'
 
     compile 'com.google.code.findbugs:jsr305:2.0.1'
     testCompile 'junit:junit:4.12'
     compile project(path: ':backend', configuration: 'android-endpoints')
 }
+
+apply plugin: 'com.google.gms.google-services'
