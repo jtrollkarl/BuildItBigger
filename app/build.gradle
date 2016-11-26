@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
-
 android {
     compileSdkVersion 25
     buildToolsVersion "24.0.1"
@@ -13,16 +12,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    productFlavors{
-        paid{
-            applicationId "com.example.jay.builditbigger.paid"
-        }
-        free{
-            applicationId "com.example.jay.builditbigger.free"
-        }
-    }
-
-
     buildTypes {
         release {
             minifyEnabled false
@@ -40,8 +29,6 @@ dependencies {
 
     compile project(':displayjoke')
 
-    freeCompile('com.google.firebase:firebase-ads:10.0.0')
-    freeCompile('com.google.firebase:firebase-core:10.0.0')
 
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.android.support:design:25.0.1'
@@ -51,4 +38,3 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
 }
-apply plugin: 'com.google.gms.google-services'
