@@ -23,4 +23,12 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.example.jay.builditbigger", appContext.getPackageName());
     }
+
+
+    @Test
+    public void returnNonNull() throws Exception{
+        String joke = new EndpointsAsyncTask().execute().get();
+        int n = joke.length();
+        assertTrue(n > 0);
+    }
 }

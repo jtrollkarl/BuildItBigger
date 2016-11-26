@@ -1,24 +1,27 @@
 package com.example.jay.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.JokeClass;
 import com.example.jay.displayjoke.DisplayJokeActivity;
+
+import java.util.concurrent.ExecutionException;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +56,23 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.bJoke)
     public void bJokeClick(Button button){
-        Toast.makeText(this, JokeClass.aJoke(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, DisplayJokeActivity.class);
-        intent.putExtra("key", JokeClass.aJoke());
-        startActivity(intent);
+
+        String joke = "";
+        try {
+            joke = new EndpointsAsyncTask().execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, e.getMessage());
+        }
+
+        //only send intent if joke is not empty (actually contains a joke)
+        if(!joke.equals("")){
+            Intent intent = new Intent(this, DisplayJokeActivity.class);
+            intent.putExtra("key", joke);
+            startActivity(intent);
+        }
     }
 }

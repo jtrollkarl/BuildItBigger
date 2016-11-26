@@ -2,7 +2,7 @@ package com.example.jay.builditbigger;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.util.Pair;
+
 import android.widget.Toast;
 
 import com.example.jay.myapplication.backend.myApi.MyApi;
@@ -17,13 +17,13 @@ import java.io.IOException;
  * Created by Jay on 2016-11-25.
  */
 
-public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     private static MyApi myApiService = null;
     private Context context;
 
     @Override
-    protected String doInBackground(Pair<Context, String>... params) {
+    protected String doInBackground(Void... voids) {
         if(myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -42,20 +42,12 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
             myApiService = builder.build();
         }
 
-        context = params[0].first;
-        String name = params[0].second;
 
         try {
-            return myApiService.sayHi(name).execute().getData();
+            //return myApiService.sayHi("test").execute().getData();
+            return myApiService.myEndpoint().sayJoke().execute().getData();
         } catch (IOException e) {
             return e.getMessage();
         }
     }
-
-    @Override
-    protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-    }
-
-
 }
