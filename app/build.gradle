@@ -46,6 +46,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
+    freeCompile 'com.google.android.gms:play-services:10.0.0'
     freeCompile 'com.google.firebase:firebase-core:10.0.0'
     freeCompile 'com.google.firebase:firebase-ads:10.0.0'
 

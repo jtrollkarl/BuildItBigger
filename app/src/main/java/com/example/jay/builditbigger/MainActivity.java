@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.jay.displayjoke.DisplayJokeActivity;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.concurrent.ExecutionException;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-4902974118735215/5170382085");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //TODO: move this onclick to fragment
     @OnClick(R.id.bJoke)
     public void bJokeClick(Button button){
 
