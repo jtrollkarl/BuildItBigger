@@ -1,24 +1,15 @@
 package com.example.jay.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.jay.displayjoke.DisplayJokeActivity;
-import com.google.android.gms.ads.MobileAds;
-
-import java.util.concurrent.ExecutionException;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MobileAds.initialize(getApplicationContext(), getString(R.string.admob_main_unit_id));
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
