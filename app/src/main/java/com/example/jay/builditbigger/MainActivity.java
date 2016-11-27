@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-4902974118735215/5170382085");
+        MobileAds.initialize(getApplicationContext(), getString(R.string.admob_main_unit_id));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
@@ -56,26 +56,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //TODO: move this onclick to fragment
-    @OnClick(R.id.bJoke)
-    public void bJokeClick(Button button){
 
-        String joke = "";
-        try {
-            joke = new EndpointsAsyncTask().execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-            Log.e(TAG, e.getMessage());
-        }
-
-        //only send intent if joke is not empty (actually contains a joke)
-        if(!joke.equals("")){
-            Intent intent = new Intent(this, DisplayJokeActivity.class);
-            intent.putExtra("key", joke);
-            startActivity(intent);
-        }
-    }
 }

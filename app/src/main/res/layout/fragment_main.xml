@@ -10,6 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:baselineAligned="false"
     tools:context="com.example.jay.builditbigger.MainActivityFragment"
     tools:showIn="@layout/activity_main">
 
@@ -17,12 +18,14 @@
         android:id="@+id/bJoke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="0"
         android:text="tell joke"
         android:layout_gravity="center"/>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
-        android:layout_gravity="center|bottom"
+        android:layout_gravity="bottom|center"
+        android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
