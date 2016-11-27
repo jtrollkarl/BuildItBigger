@@ -18,7 +18,7 @@ android {
             applicationId "com.example.jay.builditbigger.paid"
         }
         free{
-            applicationId "com.example.jay.builditbigger"
+            applicationId "com.example.jay.builditbigger.free"
         }
     }
 

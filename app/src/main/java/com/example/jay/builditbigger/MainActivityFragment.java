@@ -28,11 +28,6 @@ import butterknife.OnClick;
 public class MainActivityFragment extends Fragment {
 
 
-    @BindView(R.id.bJoke)
-    Button bJoke;
-    @BindView(R.id.adView)
-    AdView adView;
-
     private static final String TAG = MainActivityFragment.class.getSimpleName();
 
     public MainActivityFragment() {
@@ -41,34 +36,11 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ButterKnife.bind(this, view);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+
         return view;
     }
 
 
-    @OnClick(R.id.bJoke)
-    public void bJokeClick(Button button) {
-
-        String joke = "";
-        try {
-            joke = new EndpointsAsyncTask().execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-            Log.e(TAG, e.getMessage());
-        }
-
-        //only send intent if joke is not empty (actually contains a joke)
-        if (!joke.equals("")) {
-            Intent intent = new Intent(getActivity(), DisplayJokeActivity.class);
-            intent.putExtra("key", joke);
-            startActivity(intent);
-        }
-    }
 
 
 }
