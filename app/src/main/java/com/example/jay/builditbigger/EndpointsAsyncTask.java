@@ -20,7 +20,6 @@ import java.io.IOException;
 public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     private static MyApi myApiService = null;
-    private Context context;
 
     @Override
     protected String doInBackground(Void... voids) {
@@ -44,7 +43,6 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
 
         try {
-            //return myApiService.sayHi("test").execute().getData();
             return myApiService.myEndpoint().sayJoke().execute().getData();
         } catch (IOException e) {
             return e.getMessage();
